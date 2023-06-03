@@ -8,10 +8,10 @@ import img6 from '../../../public/images/banner/6.jpg';
 const Banner = () => {
     return (
         <div>
-            <div className="carousel w-full h-[600px]">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src={img1} className="w-full rounded" />
-                    <div className="absolute flex items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] top-0 left-0  w-1/2">
+            <div className="carousel w-full rounded-xl h-[600px]">
+                <div id="slide1" className="carousel-item  relative w-full">
+                    <img src={img1} className="w-full " />
+                    <div className="absolute  flex items-center h-full  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] top-0 left-0  w-1/2">
                         <div className='ms-12 space-y-4 '>
                             <h1 className='text-5xl font-bold text-white'>Affordable Price For Car Servicing</h1>
                             <p className='text-white'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>

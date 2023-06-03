@@ -1,11 +1,12 @@
 
+import AboutSection from '../../Banner/AboutSection';
 import Banner from '../../Banner/Banner';
 
 const Home = () => {
     return (
-        <div className='mx-40'>
+        <div className='px-40'>
             <Banner></Banner>
-            <h1>this is home</h1>
+            <AboutSection></AboutSection>
         </div>
     );
 };
