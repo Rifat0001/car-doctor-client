@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import login from '../../../public/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
-
+import Swal from 'sweetalert2'
 const SignUp = () => {
+    const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
     const handleSignUp = event => {
         event.preventDefault();
@@ -15,8 +16,17 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('');
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Sign Up Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
             })
-            .then(error => console.log(error))
+            .catch(error => {
+                setError(error.message);
+            })
     }
     return (
         <div className="hero min-h-screen ">
@@ -46,10 +56,11 @@ const SignUp = () => {
                             <input type="password" required name='password' placeholder="password" className="input input-bordered" />
 
                         </div>
+                        <p className='text-bold text-error'>{error}</p>
                         <div className="form-control mt-6">
-                            <button className="btn btn-error text-white">Login</button>
+                            <button className="btn btn-error text-white">Sign Up</button>
                         </div>
-                        <p className='text-center font-bold mt-4'>Already have an account? please <Link to='/login' className='text-error' >Sign Up</Link> </p>
+                        <p className='text-center font-bold mt-4'>Already have an account? please <Link to='/login' className='text-error' >Login</Link> </p>
                     </form>
 
                 </div>
