@@ -33,10 +33,33 @@ const AuthProvider = ({ children }) => {
 
     // for check wheater the user is login or not?
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentuser => {
-            setUser(currentuser);
-            console.log('current user', currentuser);
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            console.log('current user', currentUser);
             setLoading(false);
+
+            if (currentUser && currentUser.email) {
+                const loggedUser = {
+                    email: currentUser.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('jwt response', data);
+                        // warning: local storage is not the best (second best place) to store access onIdTokenChanged
+                        localStorage.setItem('car-access-token', data.token);
+
+                    })
+            }
+            else {
+                localStorage.removeItem('car-access-token');
+            }
         });
         return () => {
             return unsubscribe();
