@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path: '/book/:id',
                 element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://car-doctor-server-eta-two.vercel.app//services/${params.id}`)
             },
             {
                 path: '/bookings',
