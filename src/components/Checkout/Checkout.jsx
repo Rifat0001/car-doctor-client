@@ -22,7 +22,7 @@ const Checkout = () => {
             service_id: _id,
             price: price
         }
-        fetch('https://car-doctor-server-eta-two.vercel.app//bookings', {
+        fetch('https://car-doctor-server-eta-two.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
